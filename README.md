@@ -22,6 +22,8 @@ Practice exercise as part of work with Nashville Software School. Learning to bu
 
 ##Lessons learned / reinforced
 
+- Creating an array of objects
+- person elements
 - 
 
 ## How to run: 
