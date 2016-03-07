@@ -53,20 +53,25 @@ var famousPeople = [
 ];
 
 // 2. Create a text input in your DOM.
-document.getElementById("textInputDiv").innerHTML += "<input type='text' id='textInput' value='Edit their bio!'>";
+var bodyArray = document.getElementsByTagName("body");
+var bod = bodyArray[0];
+bod.innerHTML += "<input type='text' id='inputField'>";
 
 // 3. Beneath that, create a container, block element in your DOM.
-document.getElementById("textInputDiv").firstChild.innerHTML += "<article id='container'></article>";
-// I THINK I NEED TO ACTUALLY CREATE AN ARTICLE WITH THE STUFF I NEED TO LEARN FROM 
-// MYERS CHAPTERS 64 - 68. 
-
+var articleContainer = document.createElement("article");
+articleContainer.setAttribute("id", "container");
+bod.insertBefore(articleContainer, bod.nextSibling); //remember there are 2 arguments here: (inserted item, item it is inserted before)
 
 // 4. Create a DOM element for each of the objects inside the container. Style your person 
 // elements however you like.
-
+for (var i = 0; i < famousPeople.length; i++) {
+    var cards = document.createElement("div");
+    cards.setAttribute("class", "cardsStyle");
+    articleContainer.insertBefore(cards, bod.nextSibling);
+    famousPeople[i];
+}; 
 
 // 5. For every even numbered element, have a light yellow background.
-
 
 // 6. For every odd numbered element, have a light blue background.
 
