@@ -24,7 +24,9 @@ Practice exercise as part of work with Nashville Software School. Learning to bu
 
 - Creating an array of objects
 - person elements
-- 
+- .insertBefore() 
+- writing dynamically to the DOM
+- string templating
 
 ## How to run: 
 ```

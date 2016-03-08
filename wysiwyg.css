@@ -1,5 +1,5 @@
-#container {
-    height: 600px;
+#cards-container {
+    min-height: 800px;
     min-width: 90%;
     border: 5px groove gold;
 }
@@ -8,11 +8,25 @@
     margin: 5% 0 5% 35%;
 }
 
-.cardsStyle {
-    border: 1px solid black;
+.cards {
+    max-width: 25%;
+    border: 1px dotted black;
+    margin: 2%;
+    padding: 1%;
     float: left;
-    min-width: 25%;
-    min-height: 250px;
-    margin: 3%;
+    text-align: center; 
+    height: 350px;
 }
 
+.cards:nth-of-type(odd) {
+    background: lightblue;
+}
+
+.cards:nth-of-type(even) {
+    background: lightyellow;
+}
+
+.card-image {
+    width: 100px;
+    height: 150px;
+}
