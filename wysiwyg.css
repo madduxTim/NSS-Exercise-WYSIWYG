@@ -1,5 +1,5 @@
 #cards-container {
-    min-height: 800px;
+    min-height: 825px;
     min-width: 90%;
     border: 5px groove gold;
 }
@@ -9,12 +9,13 @@
 }
 
 .cards {
+    box-sizing: border-box;
     max-width: 25%;
     margin: 2%;
     padding: 1%;
     float: left;
     text-align: center; 
-    height: 350px;
+    height: 375px;
 }
 
 .cards:nth-of-type(odd) {
