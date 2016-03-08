@@ -10,7 +10,6 @@
 
 .cards {
     max-width: 25%;
-    border: 1px dotted black;
     margin: 2%;
     padding: 1%;
     float: left;
@@ -29,4 +28,8 @@
 .card-image {
     width: 100px;
     height: 150px;
+}
+
+.borderCards {
+    border: 3px dotted black;
 }

@@ -63,11 +63,11 @@ var cards= document.getElementById("cards-container");
 for (var i = 0; i < famousPeople.length; i++) {
     var newCard = "";
     newCard += 
-    `<article class="cards">
+    `<person class="cards">
       <header> ${famousPeople[i].name}, ${famousPeople[i].title}</header>
       <section><p class="card-bio">${famousPeople[i].bio}</p> <img class="card-image" src="${famousPeople[i].image}"></section>
       <footer>${famousPeople[i].lifespan.birth} - ${famousPeople[i].lifespan.death}</footer>
-    </article>`;
+    </person>`;
     cards.innerHTML += newCard;
 }; 
 
@@ -78,10 +78,15 @@ for (var i = 0; i < famousPeople.length; i++) {
 // See CSS
 
 // 7. Each element's DOM structure should be as shown below.
-
+// See HTML
 
 // 8. When you click on one of the person elements, a dotted border should appear around it.
-
+var persons = document.getElementsByTagName("person")
+for (var i = 0; i < persons.length; i++) {
+  persons[i].addEventListener("click", function() {
+    this.classList.toggle("borderCards");
+})
+}
 
 // 9. When you click on one of the person elements, the text input should immediately 
 // gain focus so that you can start typing.

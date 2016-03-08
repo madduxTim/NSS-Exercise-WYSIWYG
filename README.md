@@ -22,11 +22,11 @@ Practice exercise as part of work with Nashville Software School. Learning to bu
 
 ##Lessons learned / reinforced
 
-- Creating an array of objects
+- Sorting data in an array of objects
 - person elements
-- .insertBefore() 
+- .insertBefore() method 
 - writing dynamically to the DOM
-- string templating
+- string templating ` ${ } ` 
 
 ## How to run: 
 ```
