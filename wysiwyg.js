@@ -79,9 +79,9 @@ for (var i = 0; i < famousPeople.length; i++) {
 
 // 7. Each element's DOM structure should be as shown below.
 // See HTML
-
-var persons = document.getElementsByTagName("person")
+var persons = document.getElementsByTagName("person");
 var inputArea = document.getElementById("inputField");
+var bios = document.getElementsByClassName("card-bio");
 for (var i = 0; i < persons.length; i++) {
   persons[i].addEventListener("click", function() {
 // 8. When you click on one of the person elements, a dotted border should appear around it.
@@ -91,26 +91,29 @@ for (var i = 0; i < persons.length; i++) {
 
 // 9. When you click on one of the person elements, the text input should immediately 
 // gain focus so that you can start typing.
-for (var i = 0; i < persons.length; i++) {
-  persons[i].addEventListener("click", function() {
-    inputArea.addEventListener("focus", function(event) {
-      event.target.style.background = "pink";    
-    }, true);
-    inputArea.addEventListener("blur", function(event) {
-      event.target.style.background = "";    
-    }, true);
-  })
-}
-
-
 // 10. When there is a highlighted person element, and you begin typing in the input box, 
 // the person's biography should be immediately bound to what you are typing, letter by letter.
+for (var i = 0; i < bios.length; i++)
+  bios[i].addEventListener("click", "focus", function() {
+  }, true);
 
+inputArea.addEventListener("focus", function(event) {
+  event.target.style.background = "pink";
+  }, true);
+// FOR THESE TWO, I WAS ABLE TO FIND A 'FOCUS' EVENT HANDLER VIA MDN, 
+// BUT CANNOT GET A FUNCTIONAL ATTEMPT AT ATTACHING AN E.L. TO  AN ARRAY LIST 
+// AND THEN GET THE FOCUS TO SHOW ON A DIFFERENT TARGET....
+inputArea.addEventListener("blur", function(event) {
+  event.target.style.background = "";
+  }, true);
 
 // 11. When you press the enter/return key when typing in the input field, then the content of 
 // the input field should immediately be blank.
-
-// document.getElementById("inputField").addEventListener("keyup", )
+document.getElementById("inputField").addEventListener("keypress", function(e) {
+  if (13 === e.keyCode) {
+    inputArea.value = "";
+  }
+});
 
 
 
