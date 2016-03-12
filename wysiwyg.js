@@ -1,12 +1,10 @@
 "use strict"
-var persons = document.getElementsByTagName("person");
-var inputArea = document.getElementById("inputField");
-var cards= document.getElementById("cards-container");
-var famousPeople = [
+
+let people = [
 {
   title: "Judge",
   name: "Learned Hand",
-  bio: "Bumpersticker-maker for the legal world. One of the most famouse judges to never become a Supreme Court Justice I think.",
+  bio: "One of the most famouse judges to never become a Supreme Court Justice.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
     birth: 1872,
@@ -16,7 +14,7 @@ var famousPeople = [
 {
   title: "CEO",
   name: "Quasimodo",
-  bio: "He ran the bells really well. I honestly don't remember a thing about the Hunchbach of Notre Dame.",
+  bio: "He ran the bells really well. Had back problems.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
     birth: 1800,
@@ -55,39 +53,64 @@ var famousPeople = [
 },
 ];
 
-for (var i = 0; i < famousPeople.length; i++) {
-    var newCard = "";
-    newCard += 
-    `<person class="cards">
-      <header> ${famousPeople[i].name}, ${famousPeople[i].title}</header>
-      <section><p class="card-bio--${i}">${famousPeople[i].bio}</p> <img class="card-image" src="${famousPeople[i].image}"></section>
-      <footer>${famousPeople[i].lifespan.birth} - ${famousPeople[i].lifespan.death}</footer>
-    </person>`;
-    cards.innerHTML += newCard;
-  }
-
-for (var i = 0; i < persons.length; i++) {
-    persons[i].addEventListener("click", function() {
-    this.classList.toggle("borderCards");
-    })
+let container = document.getElementById("container");
+let input = document.getElementById("input");
+let card = document.getElementsByClassName("card");
+let bio = document.getElementsByClassName("bios")
+// 1.
+function populateDom() {
+  for (let i = 0; i < people.length; i++) {
+      let person = people[i]; 
+      buildCard(person);
+    }
+      addClickEvent();
 }
 
-// document.getElementById("input").addEventListener("keyup", function() {
-//     document.getElementById("output-target").innerHTML = document.getElementById("keypress-input").value;  
-// });
+// 2.
+function buildCard(person) {
+    container.innerHTML += `<person class="card"><header>
+    ${person.title}, ${person.name}</header><section><p  class="bios">${person.bio}
+    </p><img src="${person.image}"></section>
+    <footer>${person.lifespan.birth}-${person.lifespan.death}</footer></person>`
+};
 
-document.getElementById("inputField").addEventListener("keypress", function(e) {
-  if (e.keyCode === 13) {
-    inputArea.value = "";
+// 3.
+function addClickEvent(currentCard) {
+    for (let i = 0; i<card.length; i++) {
+        let currentCard = card[i];
+        let currentBio = bio[i];
+        currentCard.addEventListener("click", function() {
+          removeSelected();
+          currentCard.classList.add("selectedCard");
+          input.value="";
+          input.focus();
+          keyEvent(currentCard, currentBio);
+        })
+    }
+  };
+
+  // 4.
+  function removeSelected() {
+    for (let i =0; i<card.length; i++) {
+      card[i].classList.remove("selectedCard");
+    }
   }
-});
 
+// 5. 
+function keyEvent(currentCard, currentBio) {
+  input.addEventListener("keyup", function(event) {
+    if (currentCard.classList.contains("selectedCard")) {
+      let newBio = event.currentTarget.value;
+      currentBio.innerHTML= newBio;
+      if (event.keyCode === 13) {
+      currentBio.innerHTML = newBio;
+      input.value = "";
+      }
+    }
+  })
+};
 
-
-
-
-
-
+populateDom();
 
 
 

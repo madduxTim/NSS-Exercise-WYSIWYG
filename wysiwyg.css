@@ -1,7 +1,7 @@
 #container {
     min-height: 825px;
     min-width: 90%;
-    border: 5px groove gold;
+    border: 5px groove silver;
 }
 
 #input {
@@ -11,26 +11,28 @@
 .card {
     box-sizing: border-box;
     max-width: 25%;
-    margin: 2%;
-    padding: 1%;
+    margin: 2% 2% 2% 5%;
+    padding: 2%;
     float: left;
     text-align: center; 
     height: 375px;
-}
-
-.card:nth-of-type(odd) {
-    background: lightblue;
+    border: 2px dotted black;
 }
 
 .card:nth-of-type(even) {
+    background: lightblue;
+}
+
+.card:nth-of-type(odd) {
     background: lightyellow;
 }
 
 img {
     width: 100px;
     height: 150px;
+    padding-bottom: 2%;
 }
 
-.borderCards {
-    border: 3px dotted black;
+.selectedCard {
+    border: 3px dotted red;
 }
