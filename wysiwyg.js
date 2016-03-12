@@ -1,4 +1,7 @@
-// 1. Create an array of objects that represents famous people (see structure below).
+"use strict"
+var persons = document.getElementsByTagName("person");
+var inputArea = document.getElementById("inputField");
+var cards= document.getElementById("cards-container");
 var famousPeople = [
 {
   title: "Judge",
@@ -52,65 +55,29 @@ var famousPeople = [
 },
 ];
 
-// 2. Create a text input in your DOM.
-// See HTML 
-
-// 3. Beneath that, create a container, block element in your DOM.
-var cards= document.getElementById("cards-container");
-
-// 4. Create a DOM element for each of the objects inside the container. Style your person 
-// elements however you like.
 for (var i = 0; i < famousPeople.length; i++) {
     var newCard = "";
     newCard += 
     `<person class="cards">
       <header> ${famousPeople[i].name}, ${famousPeople[i].title}</header>
-      <section><p class="card-bio">${famousPeople[i].bio}</p> <img class="card-image" src="${famousPeople[i].image}"></section>
+      <section><p class="card-bio--${i}">${famousPeople[i].bio}</p> <img class="card-image" src="${famousPeople[i].image}"></section>
       <footer>${famousPeople[i].lifespan.birth} - ${famousPeople[i].lifespan.death}</footer>
     </person>`;
     cards.innerHTML += newCard;
-}; 
+  }
 
-// 5. For every even numbered element, have a light yellow background.
-// See CSS
-
-// 6. For every odd numbered element, have a light blue background.
-// See CSS
-
-// 7. Each element's DOM structure should be as shown below.
-// See HTML
-var persons = document.getElementsByTagName("person");
-var inputArea = document.getElementById("inputField");
-var bios = document.getElementsByClassName("card-bio");
 for (var i = 0; i < persons.length; i++) {
-  persons[i].addEventListener("click", function() {
-// 8. When you click on one of the person elements, a dotted border should appear around it.
+    persons[i].addEventListener("click", function() {
     this.classList.toggle("borderCards");
-  })
+    })
 }
 
-// 9. When you click on one of the person elements, the text input should immediately 
-// gain focus so that you can start typing.
-// 10. When there is a highlighted person element, and you begin typing in the input box, 
-// the person's biography should be immediately bound to what you are typing, letter by letter.
-for (var i = 0; i < bios.length; i++)
-  bios[i].addEventListener("click", "focus", function() {
-  }, true);
+// document.getElementById("input").addEventListener("keyup", function() {
+//     document.getElementById("output-target").innerHTML = document.getElementById("keypress-input").value;  
+// });
 
-inputArea.addEventListener("focus", function(event) {
-  event.target.style.background = "pink";
-  }, true);
-// FOR THESE TWO, I WAS ABLE TO FIND A 'FOCUS' EVENT HANDLER VIA MDN, 
-// BUT CANNOT GET A FUNCTIONAL ATTEMPT AT ATTACHING AN E.L. TO  AN ARRAY LIST 
-// AND THEN GET THE FOCUS TO SHOW ON A DIFFERENT TARGET....
-inputArea.addEventListener("blur", function(event) {
-  event.target.style.background = "";
-  }, true);
-
-// 11. When you press the enter/return key when typing in the input field, then the content of 
-// the input field should immediately be blank.
 document.getElementById("inputField").addEventListener("keypress", function(e) {
-  if (13 === e.keyCode) {
+  if (e.keyCode === 13) {
     inputArea.value = "";
   }
 });

@@ -1,14 +1,14 @@
-#cards-container {
+#container {
     min-height: 825px;
     min-width: 90%;
     border: 5px groove gold;
 }
 
-#inputField {
+#input {
     margin: 5% 0 5% 35%;
 }
 
-.cards {
+.card {
     box-sizing: border-box;
     max-width: 25%;
     margin: 2%;
@@ -18,23 +18,19 @@
     height: 375px;
 }
 
-.cards:nth-of-type(odd) {
+.card:nth-of-type(odd) {
     background: lightblue;
 }
 
-.cards:nth-of-type(even) {
+.card:nth-of-type(even) {
     background: lightyellow;
 }
 
-.card-image {
+img {
     width: 100px;
     height: 150px;
 }
 
 .borderCards {
     border: 3px dotted black;
-}
-
-.hidden {
-    display: none;
 }
