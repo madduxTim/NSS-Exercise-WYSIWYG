@@ -1,101 +1,116 @@
-// 1. Create an array of objects that represents famous people (see structure below).
-var famousPeople = [
+"use strict"
+
+let people = [
 {
-  title: "Samurai",
-  name: "Tomoe Gozen",
-  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+  title: "Judge",
+  name: "Learned Hand",
+  bio: "One of the most famouse judges to never become a Supreme Court Justice.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
-    birth: 1747,
-    death: 1797
+    birth: 1872,
+    death: 1961
   }
 },
 {
-  title: "Samurai",
-  name: "Tomoe Gozen",
-  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+  title: "CEO",
+  name: "Quasimodo",
+  bio: "He ran the bells really well. Had back problems.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
-    birth: 1747,
-    death: 1797
+    birth: 1800,
+    death: 1850
   }
 },
 {
-  title: "Samurai",
-  name: "Tomoe Gozen",
-  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+  title: "Pizza delivery boy",
+  name: "Jeff Swanson",
+  bio: "Worked at the Nipper's Corner location Domnioes for 14 years until he drove accidentally into head-on traffic.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
-    birth: 1747,
-    death: 1797
+    birth: 1980,
+    death: 2001
   }
 },
 {
-  title: "Samurai",
-  name: "Tomoe Gozen",
-  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+  title: "Cat-herd",
+  name: "Mira Jenkins",
+  bio: "A blackbelt in karate, theoretical-physicist, Guiness Records-holder for most books eaten.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
-    birth: 1747,
-    death: 1797
+    birth: 1964,
+    death: 2015
   }
 },
 {
-  title: "Samurai",
-  name: "Tomoe Gozen",
-  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+  title: "Welder",
+  name: "Big Mike",
+  bio: "He was a welder, and a fan of the sportsball. He left us too early.",
   image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
   lifespan: {
-    birth: 1747,
-    death: 1797
+    birth: 1962,
+    death: 2014
   }
 },
 ];
 
-// 2. Create a text input in your DOM.
-document.getElementById("textInputDiv").innerHTML += "<input type='text' id='textInput' value='Edit their bio!'>";
+let container = document.getElementById("container");
+let input = document.getElementById("input");
+let card = document.getElementsByClassName("card");
+let bio = document.getElementsByClassName("bios")
+// 1.
+function populateDom() {
+  for (let i = 0; i < people.length; i++) {
+      let person = people[i]; 
+      buildCard(person);
+    }
+      addClickEvent();
+}
 
-// 3. Beneath that, create a container, block element in your DOM.
-document.getElementById("textInputDiv").firstChild.innerHTML += "<article id='container'></article>";
-// I THINK I NEED TO ACTUALLY CREATE AN ARTICLE WITH THE STUFF I NEED TO LEARN FROM 
-// MYERS CHAPTERS 64 - 68. 
+// 2.
+function buildCard(person) {
+    container.innerHTML += `<person class="card"><header>
+    ${person.title}, ${person.name}</header><section><p  class="bios">${person.bio}
+    </p><img src="${person.image}"></section>
+    <footer>${person.lifespan.birth}-${person.lifespan.death}</footer></person>`
+};
 
+// 3.
+function addClickEvent(currentCard) {
+    for (let i = 0; i<card.length; i++) {
+        let currentCard = card[i];
+        let currentBio = bio[i];
+        currentCard.addEventListener("click", function() {
+          removeSelected();
+          currentCard.classList.add("selectedCard");
+          input.value="";
+          input.focus();
+          keyEvent(currentCard, currentBio);
+        })
+    }
+  };
 
-// 4. Create a DOM element for each of the objects inside the container. Style your person 
-// elements however you like.
+  // 4.
+  function removeSelected() {
+    for (let i =0; i<card.length; i++) {
+      card[i].classList.remove("selectedCard");
+    }
+  }
 
+// 5. 
+function keyEvent(currentCard, currentBio) {
+  input.addEventListener("keyup", function(event) {
+    if (currentCard.classList.contains("selectedCard")) {
+      let newBio = event.currentTarget.value;
+      currentBio.innerHTML= newBio;
+      if (event.keyCode === 13) {
+      currentBio.innerHTML = newBio;
+      input.value = "";
+      }
+    }
+  })
+};
 
-// 5. For every even numbered element, have a light yellow background.
-
-
-// 6. For every odd numbered element, have a light blue background.
-
-
-// 7. Each element's DOM structure should be as shown below.
-
-
-// 8. When you click on one of the person elements, a dotted border should appear around it.
-
-
-// 9. When you click on one of the person elements, the text input should immediately 
-// gain focus so that you can start typing.
-
-
-// 10. When there is a highlighted person element, and you begin typing in the input box, 
-// the person's biography should be immediately bound to what you are typing, letter by letter.
-
-
-// 11. When you press the enter/return key when typing in the input field, then the content of 
-// the input field should immediately be blank.
-
-
-
-
-
-
-
-
-
+populateDom();
 
 
 
