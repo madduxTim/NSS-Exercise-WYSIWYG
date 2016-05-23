@@ -111,6 +111,3 @@ function keyEvent(currentCard, currentBio) {
 };
 
 populateDom();
-
-
-
