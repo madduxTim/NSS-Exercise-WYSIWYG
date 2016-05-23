@@ -28,7 +28,10 @@ Practice exercise as part of work with Nashville Software School. Learning to bu
 - writing dynamically to the DOM
 - string templating ` ${ } ` 
 - event.target
-- event bubbling  
+- event bubbling 
+
+##Screenshot
+![The finished product:](https://github.com/madduxTim/NSS-Exercises-WYSIWYG/blob/master/screenshot.png) 
 
 ## How to run: 
 ```
